@@ -1,0 +1,11 @@
+# Environnement
+.env
+__pycache__/
+
+# Données
+data/raw/*
+data/processed/*
+data/external/*
+
+# Résultats
+results/*

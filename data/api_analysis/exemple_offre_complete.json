@@ -1,0 +1,61 @@
+{
+  "id": "200TVZN",
+  "intitule": "Développeur C embarqué - Domaine des systèmes durcis (H/F)",
+  "description": "Notre client est spécialisé dans le domaine des systèmes embarqués en environnement durci. La société propose à des clients dans les secteurs de la défense, l'aéronautique, ou encore l'aérospatial, des produits matériels et logiciels sur-mesure. \n \nDans le cadre de la réalisation d'une application multi domaines et multi capteurs permettant d'interfacer des équipements avec plusieurs capteurs, de différentes natures, visant à rapatrier des informations de géolocalisation, la société recherche un développeur logiciel embarqué (middleware).\n\nDescriptif mission :\n\nRattaché à une équipe de 8 personnes et plus particulièrement au sein de l'équipe logiciel composée de 3 développeurs, vous travaillerez au développement et à l'amélioration de logiciel de validation ligne de produit sur les calculateurs. Vos missions seront les suivantes :\n \n- Vous participez à l'évolution des exigences systèmes et en matière d'architecture \n- Vous participerez à la rédaction des documents de spécifications de conception et de tests unitaires\n- Vous développerez en langage C/C++ embarqué, les drivers Linux \n- Vous développerez les fonctionnalités logicielles, sur cible MPSoC, embarquant du temps réel\n- Vous rédigez et suivi les plans de validation et les tests qui y sont associés\n \nEnvironnement technique : C/C++, linux embarqué, Yocto, Python\n \nPourquoi postuler ?\n- Accompagnez des projets nécessaires à la protection et à la défense du territoire français et de l'Europe\n- Vous travaillerez sur un tout nouveau projet de développement d'une nouvelle famille de produits pour un client historique \n- Rejoignez une entreprise stable financièrement et soutenue par des acteurs majeurs du secteur de la défense et de - --l'aéronautique, leur permettant d'avoir un carnet de commandes plein jusqu'en 2027.\n\nProfil du candidat :\n- Vous avez une première expérience en développement C ou C/C++ embarqué (la connaissance du développement middleware est obligatoire)\n- La connaissance de Linux est obligatoire\n- Une première expérience de Yocto est un plus\n- De par le caractère secret défense de certains projets, vous devez être en mesure d'être habilitable défense\n\nComplément du poste :\n- Lieu : Massy (91)\n- Contrat : CDI\n- Salaire : 40 - 50K€ (selon profil et expérience)",
+  "dateCreation": "2025-11-25T18:04:23.304Z",
+  "dateActualisation": "2025-11-25T18:04:23.803Z",
+  "lieuTravail": {
+    "libelle": "91 - Massy",
+    "latitude": 48.730893,
+    "longitude": 2.271256,
+    "codePostal": "91300",
+    "commune": "91377"
+  },
+  "romeCode": "M1805",
+  "romeLibelle": "Développeur / Développeuse informatique",
+  "appellationlibelle": "Développeur / Développeuse systèmes embarqués",
+  "entreprise": {
+    "nom": "SILKHOM",
+    "description": "Silkhom est un cabinet de recrutement spécialisé sur les métiers de l'informatique, du digital et des objets connectés (pas de SSII, placements directs chez nos clients en CDI). Nous travaillons exclusivement avec des clients finaux.",
+    "entrepriseAdaptee": false
+  },
+  "typeContrat": "CDI",
+  "typeContratLibelle": "CDI",
+  "natureContrat": "Contrat travail",
+  "experienceExige": "D",
+  "experienceLibelle": "Débutant accepté",
+  "salaire": {
+    "libelle": "Annuel de 40000.0 Euros à 50000.0 Euros sur 12.0 mois"
+  },
+  "dureeTravailLibelle": "39H/semaine\nTravail en journée",
+  "dureeTravailLibelleConverti": "Temps plein",
+  "alternance": false,
+  "contact": {
+    "nom": "SILKHOM - M. ELIE PERICARD",
+    "coordonnees1": "Pour postuler, utiliser le lien suivant : https://candidat.francetravail.fr/offres/recherche/detail/200TVZN",
+    "courriel": "Pour postuler, utiliser le lien suivant : https://candidat.francetravail.fr/offres/recherche/detail/200TVZN"
+  },
+  "agence": {},
+  "nombrePostes": 1,
+  "accessibleTH": false,
+  "deplacementCode": "1",
+  "deplacementLibelle": "Jamais",
+  "qualificationCode": "9",
+  "qualificationLibelle": "Cadre",
+  "codeNAF": "70.22Z",
+  "secteurActivite": "70",
+  "secteurActiviteLibelle": "Conseil pour les affaires et autres conseils de gestion",
+  "trancheEffectifEtab": "20 à 49 salariés",
+  "origineOffre": {
+    "origine": "1",
+    "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/200TVZN"
+  },
+  "offresManqueCandidats": false,
+  "contexteTravail": {
+    "horaires": [
+      "39H/semaine\nTravail en journée"
+    ]
+  },
+  "entrepriseAdaptee": false,
+  "employeurHandiEngage": false
+}

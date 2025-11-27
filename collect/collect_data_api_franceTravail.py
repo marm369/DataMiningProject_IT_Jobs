@@ -38,13 +38,13 @@ def get_token():
         response = requests.post(TOKEN_URL, params=params, data=data, headers=headers, timeout=30)
         
         if response.status_code == 200:
-            print("✅ Authentification réussie !")
+            print(" Authentification réussie !")
             return response.json()["access_token"]
         else:
-            print(f"❌ Erreur d'authentification ({response.status_code}): {response.text}")
+            print(f" Erreur d'authentification ({response.status_code}): {response.text}")
             return None
     except Exception as e:
-        print(f"❌ Erreur de connexion: {e}")
+        print(f" Erreur de connexion: {e}")
         return None
 
 def search_offers(token, keyword, max_results=150):
@@ -92,34 +92,34 @@ def search_offers(token, keyword, max_results=150):
                 time.sleep(1)
                 
             elif response.status_code == 429:  # Too Many Requests
-                print("  ⚠️ Rate limiting détecté, pause de 30 secondes...")
+                print("  Rate limiting détecté, pause de 30 secondes...")
                 time.sleep(30)
                 consecutive_errors += 1
                 
             else:
-                print(f"❌ Erreur API: {response.status_code}")
+                print(f" Erreur API: {response.status_code}")
                 consecutive_errors += 1
                 # Pause plus longue en cas d'erreur
                 time.sleep(5)
                 
         except requests.exceptions.Timeout:
-            print("  ⏰ Timeout de la requête, nouvelle tentative...")
+            print("  Timeout de la requête, nouvelle tentative...")
             consecutive_errors += 1
             time.sleep(5)
             
         except requests.exceptions.ConnectionError as e:
-            print(f"  🔌 Erreur de connexion: {e}")
+            print(f"  Erreur de connexion: {e}")
             consecutive_errors += 1
-            print("  ⏳ Pause de 10 secondes avant nouvelle tentative...")
+            print("  Pause de 10 secondes avant nouvelle tentative...")
             time.sleep(10)
             
         except Exception as e:
-            print(f"  ❌ Erreur inattendue: {e}")
+            print(f"  Erreur inattendue: {e}")
             consecutive_errors += 1
             time.sleep(5)
     
     if consecutive_errors >= max_consecutive_errors:
-        print(f"  🚫 Arrêt après {max_consecutive_errors} erreurs consécutives")
+        print(f"  Arrêt après {max_consecutive_errors} erreurs consécutives")
     
     return all_offers[:max_results]
 
@@ -296,7 +296,7 @@ def main():
     all_offers = []
     comptage_par_metier = {}
     
-    print(f"🎯 Recherche sur {len(metiers_it)} métiers IT\n")
+    print(f" Recherche sur {len(metiers_it)} métiers IT\n")
     
     for i, metier in enumerate(metiers_it, 1):
         print(f"[{i}/{len(metiers_it)}] ", end="")
@@ -307,11 +307,11 @@ def main():
             print(f"✅ {len(offers)} offres collectées pour '{metier}'")
         else:
             comptage_par_metier[metier] = 0
-            print(f"⚠️ Aucune offre trouvée pour '{metier}'")
+            print(f" Aucune offre trouvée pour '{metier}'")
         
         # Pause entre les métiers pour éviter le rate limiting
         if i < len(metiers_it):  # Pas de pause après le dernier métier
-            print("  💤 Pause de 3 secondes entre les métiers...")
+            print("   Pause de 3 secondes entre les métiers...")
             time.sleep(3)
 
     # 4️⃣ POST-TRAITEMENT : Filtrer et transformer les données
@@ -326,11 +326,11 @@ def main():
         metier = offer.get("metier_recherche")
         comptage_120_jours[metier] = comptage_120_jours.get(metier, 0) + 1
     
-    print(f"📅 Offres des 120 derniers jours: {len(offers_120_days)}/{len(all_offers)}")
+    print(f" Offres des 120 derniers jours: {len(offers_120_days)}/{len(all_offers)}")
     
     # Transformer en colonnes cibles
     transformed_offers = transform_to_target_columns(offers_120_days)
-    print(f"🎯 Données transformées: {len(transformed_offers)} offres")
+    print(f" Données transformées: {len(transformed_offers)} offres")
 
     # 5️⃣ Sauvegarde des données brutes ET transformées
     if all_offers:
@@ -380,23 +380,23 @@ def main():
         df_cible.to_csv(csv_path_cible, index=False, encoding='utf-8')
 
         print("\n" + "="*60)
-        print("💾 DONNÉES SAUVEGARDÉES")
+        print(" DONNÉES SAUVEGARDÉES")
         print("="*60)
-        print(f"📁 DONNÉES BRUTES ({DATA_RAW_DIR}):")
+        print(f" DONNÉES BRUTES ({DATA_RAW_DIR}):")
         print(f"   - {json_path_brut}")
         print(f"   - {csv_path_brut}")
         print(f"   - {meta_path}")
         
-        print(f"\n📁 DONNÉES CIBLÉES ({DATA_PROCESSED_DIR}):")
+        print(f"\n DONNÉES CIBLÉES ({DATA_PROCESSED_DIR}):")
         print(f"   - {json_path_cible}")
         print(f"   - {csv_path_cible}")
         
-        print(f"\n📊 STATISTIQUES:")
+        print(f"\n STATISTIQUES:")
         print(f"   - Total brut: {len(all_offers)} offres")
         print(f"   - 120 derniers jours: {len(offers_120_days)} offres")
         print(f"   - Colonnes cibles: {len(transformed_offers[0].keys()) if transformed_offers else 0}")
     else:
-        print("❌ Aucune offre collectée.")
+        print(" Aucune offre collectée.")
 
 if __name__ == "__main__":
     main()

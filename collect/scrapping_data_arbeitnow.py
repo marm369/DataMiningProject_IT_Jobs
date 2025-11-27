@@ -392,7 +392,7 @@ def main():
     """
     Fonction principale
     """
-    print("🚀 Début du scraping des offres IT en France depuis Arbeitnow...")
+    print(" Début du scraping des offres IT en France depuis Arbeitnow...")
     print("=" * 60)
     
     # Récupérer les offres
@@ -409,38 +409,38 @@ def main():
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(offres, f, ensure_ascii=False, indent=2)
     
-    print(f"\n✅ Scraping terminé. {len(offres)} offres IT françaises sauvegardées dans '{filename}'")
+    print(f"\n Scraping terminé. {len(offres)} offres IT françaises sauvegardées dans '{filename}'")
     
     # Générer les statistiques
     stats = generate_statistics(offres)
     
-    print(f"\n📊 STATISTIQUES DÉTAILLÉES")
+    print(f"\n STATISTIQUES DÉTAILLÉES")
     print("=" * 40)
     
-    print(f"\n🏢 RÉPARTITION PAR MÉTIER IT:")
+    print(f"\n RÉPARTITION PAR MÉTIER IT:")
     for metier, count in stats['metiers'].most_common():
         print(f"  {metier}: {count} offres ({count/len(offres)*100:.1f}%)")
     
-    print(f"\n🎯 NIVEAUX DE SÉNIORITÉ:")
+    print(f"\n NIVEAUX DE SÉNIORITÉ:")
     for niveau, count in stats['niveaux'].most_common():
         print(f"  {niveau}: {count} offres")
     
-    print(f"\n💻 TOP 15 COMPÉTENCES TECHNIQUES:")
+    print(f"\n TOP 15 COMPÉTENCES TECHNIQUES:")
     for competence, count in stats['competences'].most_common(15):
         print(f"  {competence}: {count} offres")
     
-    print(f"\n📍 LOCALISATIONS:")
+    print(f"\n LOCALISATIONS:")
     for ville, count in stats['villes'].most_common(10):
         print(f"  {ville}: {count} offres")
     
-    print(f"\n📝 TYPES DE CONTRAT:")
+    print(f"\n TYPES DE CONTRAT:")
     for contrat, count in stats['types_contrat'].most_common():
         print(f"  {contrat}: {count} offres")
     
-    print(f"\n🏠 TÉLÉTRAVAIL: {stats['teletravail']}/{len(offres)} offres ({stats['teletravail']/len(offres)*100:.1f}%)")
+    print(f"\n TÉLÉTRAVAIL: {stats['teletravail']}/{len(offres)} offres ({stats['teletravail']/len(offres)*100:.1f}%)")
     
     # Afficher un exemple d'offre
-    print(f"\n📄 EXEMPLE D'OFFRE RÉCUPÉRÉE:")
+    print(f"\n EXEMPLE D'OFFRE RÉCUPÉRÉE:")
     print("=" * 40)
     if offres:
         exemple = offres[0]

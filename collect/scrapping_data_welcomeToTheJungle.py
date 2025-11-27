@@ -391,14 +391,14 @@ def scrape_wttj_companies(companies, pages_per_company=2):
                 time.sleep(0.5)  # Respect rate limiting
                 
         except Exception as e:
-            print(f"   ❌ Erreur entreprise {company}: {e}")
+            print(f"   Erreur entreprise {company}: {e}")
             continue
     
     return all_offres
 
 def main():
     """Fonction principale"""
-    print("🚀 SCRAPING WELCOME TO THE JUNGLE")
+    print("SCRAPING WELCOME TO THE JUNGLE")
     print("=" * 50)
     
     # Liste d'entreprises IT françaises populaires sur WTTJ
@@ -412,7 +412,7 @@ def main():
     offres = scrape_wttj_companies(companies[:5], pages_per_company=2)  # Limiter à 5 entreprises pour l'exemple
     
     if not offres:
-        print("❌ Aucune offre trouvée")
+        print(" Aucune offre trouvée")
         return
     
     # Sauvegarde JSON
@@ -424,29 +424,29 @@ def main():
         json.dump(offres, f, ensure_ascii=False, indent=2)
     
     print(f"\n✅ SCRAPING TERMINÉ")
-    print(f"📄 Fichier JSON: {json_path}")
-    print(f"📊 {len(offres)} offres sauvegardées")
+    print(f" Fichier JSON: {json_path}")
+    print(f" {len(offres)} offres sauvegardées")
     
     # Statistiques
-    print(f"\n📊 STATISTIQUES:")
+    print(f"\n STATISTIQUES:")
     print("=" * 30)
     
     metiers = Counter([o['metier_recherche'] for o in offres])
-    print(f"\n🏢 MÉTIERS:")
+    print(f"\n MÉTIERS:")
     for metier, count in metiers.most_common():
         print(f"  {metier}: {count} offres")
     
     niveaux = Counter([o['niveau_seniorite'] for o in offres])
-    print(f"\n🎯 NIVEAUX:")
+    print(f"\n NIVEAUX:")
     for niveau, count in niveaux.most_common():
         print(f"  {niveau}: {count} offres")
     
     teletravail_count = sum(1 for o in offres if o['teletravail'] == 'Oui')
-    print(f"\n🏠 TÉLÉTRAVAIL: {teletravail_count}/{len(offres)} offres")
+    print(f"\n TÉLÉTRAVAIL: {teletravail_count}/{len(offres)} offres")
     
     # Afficher un exemple
     if offres:
-        print(f"\n📄 EXEMPLE D'OFFRE:")
+        print(f"\n EXEMPLE D'OFFRE:")
         print("=" * 30)
         exemple = offres[0]
         print(json.dumps(exemple, ensure_ascii=False, indent=2))

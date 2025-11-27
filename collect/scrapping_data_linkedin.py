@@ -39,17 +39,17 @@ def linkedin_scraper_it_france_enhanced():
                 
                 response = requests.get(url, headers=headers, timeout=15)
                 if response.status_code != 200:
-                    print(f"   ❌ Erreur page {start} pour {keyword}")
+                    print(f"  Erreur page {start} pour {keyword}")
                     continue
                 
                 soup = BeautifulSoup(response.content, 'html.parser')
                 jobs = soup.find_all('div', class_='base-card')
                 
                 if not jobs:
-                    print(f"   ⚠ Aucune offre page {start} pour {keyword}")
+                    print(f"   Aucune offre page {start} pour {keyword}")
                     break
                 
-                print(f"   ✅ Page {start//25 + 1}: {len(jobs)} offres trouvées")
+                print(f"   Page {start//25 + 1}: {len(jobs)} offres trouvées")
                 
                 for job in jobs:
                     try:
@@ -107,7 +107,7 @@ def linkedin_scraper_it_france_enhanced():
                 time.sleep(2)  # Respect rate limiting
                 
             except Exception as e:
-                print(f"   ❌ Erreur recherche {keyword} page {start}: {e}")
+                print(f"  Erreur recherche {keyword} page {start}: {e}")
                 continue
     
     return offres
@@ -388,16 +388,16 @@ def save_to_csv(offres, filename):
         
         print(f"📊 Fichier CSV sauvegardé: {csv_path}")
 
-def main_enhanced():
+def main():
     """Version améliorée avec statistiques détaillées"""
-    print("🚀 SCRAPING LINKEDIN AMÉLIORÉ - OFFRES IT FRANCE")
+    print(" SCRAPING LINKEDIN AMÉLIORÉ - OFFRES IT FRANCE")
     print("=" * 60)
-    print(f"📁 Dossier de sauvegarde: {DATA_PROCESSED_DIR}")
+    print(f" Dossier de sauvegarde: {DATA_PROCESSED_DIR}")
     
     offres = linkedin_scraper_it_france_enhanced()
     
     if not offres:
-        print("❌ Aucune offre trouvée")
+        print(" Aucune offre trouvée")
         return
     
     # Sauvegarde JSON
@@ -413,28 +413,28 @@ def main_enhanced():
     save_to_csv(offres, csv_filename)
     
     # Statistiques détaillées
-    print(f"\n📊 RAPPORT COMPLET - {len(offres)} OFFRES ANALYSÉES")
+    print(f"\n RAPPORT COMPLET - {len(offres)} OFFRES ANALYSÉES")
     print("=" * 50)
     
     # Métiers
     metiers = Counter([o['metier_recherche'] for o in offres])
-    print(f"\n🏢 MÉTIERS IT:")
+    print(f"\n MÉTIERS IT:")
     for metier, count in metiers.most_common():
         print(f"  {metier}: {count} offres")
     
     # Niveaux
     niveaux = Counter([o['niveau_seniorite'] for o in offres])
-    print(f"\n🎯 NIVEAUX:")
+    print(f"\n NIVEAUX:")
     for niveau, count in niveaux.most_common():
         print(f"  {niveau}: {count} offres")
     
     # Télétravail
     telework_count = sum(1 for o in offres if o['teletravail'] == 'Oui')
-    print(f"\n🏠 TÉLÉTRAVAIL: {telework_count}/{len(offres)} ({telework_count/len(offres)*100:.1f}%)")
+    print(f"\n TÉLÉTRAVAIL: {telework_count}/{len(offres)} ({telework_count/len(offres)*100:.1f}%)")
     
     # Salaires réels vs estimés
     salaires_reels = sum(1 for o in offres if "Non spécifié" not in o['fourchette_salaire'])
-    print(f"\n💰 SALAIRES: {salaires_reels}/{len(offres)} offres avec salaire mentionné")
+    print(f"\n SALAIRES: {salaires_reels}/{len(offres)} offres avec salaire mentionné")
     
     # Top compétences
     all_skills = []
@@ -446,8 +446,8 @@ def main_enhanced():
         print(f"  {skill}: {count} offres")
     
     print(f"\n✅ TERMINÉ!")
-    print(f"📄 Fichier JSON: {json_path}")
-    print(f"📊 Fichier CSV: {os.path.join(DATA_PROCESSED_DIR, csv_filename)}")
+    print(f" Fichier JSON: {json_path}")
+    print(f" Fichier CSV: {os.path.join(DATA_PROCESSED_DIR, csv_filename)}")
 
 if __name__ == "__main__":
-    main_enhanced()
+    main()
